@@ -1,3 +1,3 @@
-# Aragon Liquid Democracy
+# AGP23
 
-Work in progress. [Open research challenges](https://research.aragon.org/t/open-challenges-for-on-chain-liquid-democracy/)
+Work in progress. See [AGP23](https://github.com/aragon/governance/issues/32)
