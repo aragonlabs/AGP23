@@ -36,7 +36,7 @@ contract VotingDaemon is AragonApp, Daemon {
 
     function _execute(uint256 mainProposalId) internal {
         bytes memory script = _computeScript(mainVoting, mainProposalId, castingVote, true);
-        uint256 childProposalId = childVoting.newVote(script, "", false);
+        uint256 childProposalId = childVoting.newVote(script, "", false, false);
 
         childProposalCreated[mainProposalId] = true; // reentrancy is not a concern, mainVoting and childVoting are trusted
 
