@@ -5,12 +5,12 @@ import "@aragon/apps-vault/contracts/Vault.sol";
 
 contract Daemon {
     function execute(uint256 payload) external {
-        require(canExecute(payload)); 
+        require(canExecute(payload));
 
         _execute(payload);
 
         address rewardToken;
-        uint256 rewardAmount; 
+        uint256 rewardAmount;
         (rewardToken, rewardAmount) = executionReward(payload);
 
         if (rewardAmount > 0) {

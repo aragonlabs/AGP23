@@ -10,10 +10,10 @@ import "./Daemon.sol";
 contract VotingDaemon is AragonApp, Daemon {
     Voting public mainVoting;
     Voting public childVoting;
-    bool castingVote;
-    Vault public vault;
+    bool public castingVote;
     address internal rewardToken;
     uint256 internal rewardAmount;
+    Vault internal vault_;
 
     mapping (uint256 => bool) public childProposalCreated;
 
@@ -25,7 +25,7 @@ contract VotingDaemon is AragonApp, Daemon {
         mainVoting = _mainVoting;
         childVoting = _childVoting;
         castingVote = _castingVote;
-        vault = _vault;
+        vault_ = _vault;
         rewardToken = _rewardToken;
         rewardAmount = _rewardAmount;
     }
@@ -34,9 +34,13 @@ contract VotingDaemon is AragonApp, Daemon {
         return !childProposalCreated[mainProposalId] && mainVoting.canVote(mainProposalId, address(childVoting));
     }
 
+    function vault() public view returns (Vault) {
+        return vault_;
+    }
+
     function _execute(uint256 mainProposalId) internal {
         bytes memory script = _computeScript(mainVoting, mainProposalId, castingVote, true);
-        uint256 childProposalId = childVoting.newVote(script, "", false);
+        uint256 childProposalId = childVoting.newVote(script, "", false, false);
 
         childProposalCreated[mainProposalId] = true; // reentrancy is not a concern, mainVoting and childVoting are trusted
 

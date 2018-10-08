@@ -15,6 +15,7 @@
   "author": "Aragon One AG",
   "license": "GPL-3.0",
   "devDependencies": {
+    "@aragon/apps-shared-migrations": "^1.0.0",
     "@aragon/test-helpers": "^1.0.0",
     "eth-gas-reporter": "^0.1.10",
     "ethereumjs-abi": "^0.6.4",
@@ -25,6 +26,7 @@
     "truffle-hdwallet-provider": "0.0.3"
   },
   "dependencies": {
+    "@aragon/apps-shared-minime": "^1.0.0",
     "@aragon/apps-vault": "^3.0.0-alpha.1",
     "@aragon/apps-voting": "2.0.0-alpha.1",
     "@aragon/os": "^4.0.0-beta.1"
